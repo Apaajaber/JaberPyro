@@ -13,7 +13,7 @@ from .help import add_command_help
 
 @Client.on_message(filters.command(["asupan", "ptl"], cmd) & filters.me)
 async def asupan_cmd(client: Client, message: Message):
-    Dark = await edit_or_reply(message, "`Tunggu Sebentar...`")
+    Dark = await edit_or_reply(message, "`Please wait...`")
     await gather(
         Dark.delete(),
         client.send_video(
