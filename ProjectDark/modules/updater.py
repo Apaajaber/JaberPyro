@@ -280,6 +280,5 @@ add_command_help(
     [
         ["update", "Untuk melihat list pembaruan terbaru dari DarkPyro-Userbot."],
         ["update deploy", "Untuk mengupdate userbot."],
-        ["control", "Update userbot (khusus pengguna vps)."],
     ],
 )
