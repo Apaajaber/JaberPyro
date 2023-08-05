@@ -12,7 +12,7 @@ import asyncio
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
-from config import BLACKLIST_CHAT, BOTLOG_CHATID
+from config import BOTLOG_CHATID
 from config import CMD_HANDLER as cmd
 from ProjectDark.helpers.basic import edit_or_reply
 from ProjectDark.utils.misc import extract_args
@@ -34,10 +34,6 @@ def spam_allowed():
 
 @Client.on_message(filters.me & filters.command(["dspam", "delayspam"], cmd))
 async def delayspam(client: Client, message: Message):
-    if message.chat.id in BLACKLIST_CHAT:
-        return await edit_or_reply(
-            message, "**Perintah ini Dilarang digunakan di Group ini**"
-        )
     delayspam = await extract_args(message)
     arr = delayspam.split()
     if len(arr) < 3 or not arr[0].isdigit() or not arr[1].isdigit():

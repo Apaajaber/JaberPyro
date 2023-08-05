@@ -118,10 +118,6 @@ async def toxicso(client: Client, message: Message):
 @Client.on_message(filters.command("nb", cmd) & filters.me)
 async def toxicnb(client: Client, message: Message):
     user_id = await extract_user(message)
-    if message.chat.id in BLACKLIST_CHAT:
-        return await edit_or_reply(
-            message, "**Perintah ini Dilarang digunakan di Group ini**"
-        )
     if user_id in DEVS:
         return await edit_or_reply(
             message, "**Perintah ini Dilarang digunakan Kepada Developer Saya**"
@@ -292,10 +288,6 @@ async def toxicdih(client: Client, message: Message):
 @Client.on_message(filters.command("gcs", cmd) & filters.me)
 async def toxicgcs(client: Client, message: Message):
     user_id = await extract_user(message)
-    if message.chat.id in BLACKLIST_CHAT:
-        return await edit_or_reply(
-            message, "**Perintah ini Dilarang digunakan di Group ini**"
-        )
     if user_id in DEVS:
         return await edit_or_reply(
             message, "**Perintah ini Dilarang digunakan Kepada Developer Saya**"

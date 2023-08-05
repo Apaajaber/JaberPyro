@@ -16,8 +16,6 @@ load_dotenv("config.env")
 
 API_HASH = getenv("API_HASH", "b18441a1ff607e10a989891a5462e627")
 API_ID = int(getenv("API_ID", "2040"))
-BLACKLIST_CHAT = getenv("BLACKLIST_CHAT", "")
-#BLACKLIST_GCAST = {int(x) for x in getenv("BLACKLIST_GCAST", "").split()}
 BOTLOG_CHATID = int(getenv("BOTLOG_CHATID") or 0)
 BOT_VER = "0.1@beta"
 BRANCH = getenv("BRANCH", "master")
