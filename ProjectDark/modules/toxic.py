@@ -12,7 +12,6 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import BLACKLIST_CHAT
 from config import CMD_HANDLER as cmd
 from ProjectDark.helpers.adminHelpers import DEVS
 from ProjectDark.helpers.basic import edit_or_reply

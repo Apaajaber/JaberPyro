@@ -31,8 +31,6 @@ async def join(client: Client, message: Message):
 async def leave(client: Client, message: Message):
     Dark = message.command[1] if len(message.command) > 1 else message.chat.id
     xxnx = await edit_or_reply(message, "`Processing...`")
-    if message.chat.id in BLACKLIST_CHAT:
-        return await xxnx.edit("**Perintah ini Dilarang digunakan di Group ini**")
     try:
         await xxnx.edit_text(f"{client.me.first_name} has left this group, bye!!")
         await client.leave_chat(Dark)
