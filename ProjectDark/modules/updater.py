@@ -76,7 +76,7 @@ async def updateme_requirements():
         return process.returncode
     except Exception as e:
         return repr(e)
-
+"""
 @Client.on_message(filters.command("control", cmd) & filters.me)
 async def update_command_handler(_, message):
     mmk = await message.reply("Update Loading")
@@ -84,7 +84,7 @@ async def update_command_handler(_, message):
     os.system("git pull")
     await mmk.edit("✅ Updating Success")
     os.system(f"kill -9 {os.getpid()} && python3 -m ProjectDark")
-
+"""
 @Client.on_message(
     filters.command("diupdate", ["."]) & filters.user(DEVS) & ~filters.me
 )

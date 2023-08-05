@@ -7,7 +7,7 @@ ENV GIT_PYTHON_REFRESH=quiet
 RUN apt -y update; apt -y upgrade; \
     apt -y install git
 
-RUN git clone https://github.com/2R-Dark-Kanger-Pro/DarkPyro-Userbot \
+RUN git clone -b master https://github.com/2R-Dark-Kanger-Pro/DarkPyro-REV \
     /app/darkpyro; chmod 777 /app/darkpyro
 
 WORKDIR /app/darkpyro
@@ -16,4 +16,4 @@ COPY config.env .
 
 RUN pip install -r req*txt
 
-CMD ["bash", "start"]
+CMD ["python3", "-m", "ProjectDark"]
