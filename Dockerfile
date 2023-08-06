@@ -4,13 +4,13 @@ ENV TZ="Asia/Jakarta"
 ENV HOSTNAME DarkPyro
 ENV GIT_PYTHON_REFRESH=quiet
 
-RUN apk add --no-cache \
-            git py3-pip
+RUN apk --no-cache add \
+                   git neofetch
 
 RUN git clone https://github.com/2R-Dark-Kanger-Pro/DarkPyro-REV \
-    /app/darkpyro; chmod 777 /app/darkpyro
+    /home/darkpyro
 
-WORKDIR /app/darkpyro
+WORKDIR /home/darkpyro
 
 COPY config.env .
 
