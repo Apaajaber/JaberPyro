@@ -72,10 +72,11 @@ async def reackon(client: Client, message: Message):
 @Client.on_message(filters.command("cping", ".") & filters.user(DEVS) & ~filters.me)
 @Client.on_message(filters.command("ping", cmd) & filters.me)
 async def pingme(client: Client, message: Message):
-    start = time.time()
-    sping = round((time.time() - start) * 1000, 3)
+    start = datetime.now()
+    end = datetime.now()
+    duration = (end - start).microseconds / 1000
     _ping = f"""
-<b>Ping! {sping}ms</b>
+<b>Ping! %sms</b> % (duration)
 """
     await message.reply(_ping)
 
