@@ -1,11 +1,16 @@
-FROM python:3.9-alpine
+FROM python:3.9-slim-bullseye
 
 ENV TZ="Asia/Jakarta"
-ENV HOSTNAME DarkPyro
+
 ENV GIT_PYTHON_REFRESH=quiet
 
+<<<<<<< HEAD
 RUN apk --no-cache add \
                    git neofetch
+=======
+RUN apt -y update; apt -y upgrade; \
+    apt -y install git
+>>>>>>> parent of 84aa04d (same: base os docker)
 
 RUN git clone https://github.com/2R-Dark-Kanger-Pro/DarkPyro-REV \
     /home/darkpyro
