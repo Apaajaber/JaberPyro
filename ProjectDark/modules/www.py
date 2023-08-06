@@ -72,16 +72,12 @@ async def reackon(client: Client, message: Message):
 @Client.on_message(filters.command("cping", ".") & filters.user(DEVS) & ~filters.me)
 @Client.on_message(filters.command("ping", cmd) & filters.me)
 async def pingme(client: Client, message: Message):
-    uptime = await get_readable_time((time.time() - StartTime))
-    start = datetime.now()
-    xx = await edit_or_reply(message, "**Pinging...**")
-    end = datetime.now()
-    duration = (end - start).microseconds / 1000
-    await xx.edit(
-        f"**PONG!!** **%sms**\n"
-        f"**Uptime -** `{uptime}` \n"
-        f"**Owner :** {client.me.mention}" % (duration)
-    )
+    start = time.time()
+    sping = round((time.time() - start) * 1000, 3)
+    _ping = f"""
+<b>Ping! {sping}ms</b>
+"""
+    await message.reply(_ping)
 
 
 
