@@ -35,7 +35,7 @@ from .help import add_command_help
 async def kang(client: Client, message: Message):
     user = client.me
     replied = message.reply_to_message
-    Dark = await edit_or_reply(message, "`Boleh juga ni stickernya colong ahh...`")
+    Dark = await edit_or_reply(message, "`I think this awesome...`")
     media_ = None
     emoji_ = None
     is_anim = False
@@ -65,7 +65,7 @@ async def kang(client: Client, message: Message):
             ff_vid = True
         elif replied.sticker:
             if not replied.sticker.file_name:
-                await Dark.edit("**Stiker tidak memiliki Nama!**")
+                await Dark.edit("**Sticker unnamed!**")
                 return
             emoji_ = replied.sticker.emoji
             is_anim = replied.sticker.is_animated
@@ -77,11 +77,11 @@ async def kang(client: Client, message: Message):
                 resize = True
                 ff_vid = True
         else:
-            await Dark.edit("**File Tidak Didukung**")
+            await Dark.edit("**File has not support!**")
             return
         media_ = await client.download_media(replied, file_name="ProjectDark/resources/")
     else:
-        await Dark.edit("**Silahkan Reply ke Media Foto/GIF/Sticker!**")
+        await Dark.edit("**Reply to Photo/GIF/Sticker!**")
         return
     if media_:
         args = get_arg(message)
@@ -140,7 +140,7 @@ async def kang(client: Client, message: Message):
                     packname += f"_video{pack}"
                     packnick += f" (Video){pack}"
                 await Dark.edit(
-                    f"`Membuat Sticker Pack Baru {pack} Karena Sticker Pack Sudah Penuh`"
+                    f"`Creating {pack}...`"
                 )
                 continue
             break
@@ -194,7 +194,7 @@ async def kang(client: Client, message: Message):
                     await client.send_message("Stickers", packname)
                     await asyncio.sleep(2)
                     await Dark.edit(
-                        f"**Sticker Berhasil Ditambahkan!**\n         🔥 **[KLIK DISINI](https://t.me/addstickers/{packname})** 🔥\n**Untuk Menggunakan Stickers**"
+                        f"**Sticker Added!**\n **[Here](https://t.me/addstickers/{packname})**"
                     )
                     return
             await client.send_document("stickers", media_)
@@ -242,7 +242,7 @@ async def kang(client: Client, message: Message):
             await client.send_message("Stickers", packname)
             await asyncio.sleep(2)
         await Dark.edit(
-            f"**Sticker Berhasil Ditambahkan!**\n         🔥 **[KLIK DISINI](https://t.me/addstickers/{packname})** 🔥\n**Untuk Menggunakan Stickers**"
+            f"**Sticker Added!**\n **[HERE](https://t.me/addstickers/{packname})**"
         )
         if os.path.exists(str(media_)):
             os.remove(media_)

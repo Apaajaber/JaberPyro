@@ -22,7 +22,7 @@ from .help import add_command_help
 async def quotly(client: Client, message: Message):
     args = get_arg(message)
     if not message.reply_to_message and not args:
-        return await message.edit("**Mohon Balas ke Pesan**")
+        return await message.edit("**Reply to message!**")
     bot = "QuotLyBot"
     if message.reply_to_message:
         await message.edit("`Making a Quote . . .`")
@@ -44,7 +44,7 @@ async def quotly(client: Client, message: Message):
                     else None,
                 )
             else:
-                return await message.edit("**Gagal Membuat Sticker Quotly**")
+                return await message.edit("**ERRO!**")
 
 
 add_command_help(
