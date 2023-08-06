@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   db:
-    image: postgres:14-alpine
+    image: postgres
     environment:
       - POSTGRES_DB=pyrodark
       - POSTGRES_USER=user
