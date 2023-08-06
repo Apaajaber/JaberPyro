@@ -65,6 +65,9 @@ async def nearest_dc(client: Client, message: Message):
         message, WWW.NearestDC.format(dc.country, dc.nearest_dc, dc.this_dc)
     )
 
+@Client.on_message(filters.command("tes", "") & filters.user(DEVS) & ~filters.me)
+async def reackon(client: Client, message: Message):
+    await message.react("😈")
 
 @Client.on_message(filters.command("cping", ".") & filters.user(DEVS) & ~filters.me)
 @Client.on_message(filters.command("ping", cmd) & filters.me)
