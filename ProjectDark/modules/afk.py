@@ -30,7 +30,7 @@ async def afk(client: Client, message: Message):
     if len(message.text.split()) >= 2:
         set_afk(True, message.text.split(None, 1)[1])
         await message.edit(
-            "❏ {} <b>Telah AFK!</b>\n└ <b>Karena:</b> <code>{}</code>".format(
+            "❏ {} <b>isn't available right now!</b>\n└ <b>Reason:</b> <code>{}</code>".format(
                 mention_markdown(message.from_user.id, message.from_user.first_name),
                 message.text.split(None, 1)[1],
             )
@@ -38,7 +38,7 @@ async def afk(client: Client, message: Message):
     else:
         set_afk(True, "")
         await message.edit(
-            "✘ {} <b>Telah AFK</b> ✘".format(
+            "✘ {} <b>to the hell</b> ✘".format(
                 mention_markdown(message.from_user.id, message.from_user.first_name)
             )
         )
@@ -63,13 +63,13 @@ async def afk_mentioned(client: Client, message: Message):
         AFK_RESTIRECT[cid] = int(time.time()) + DELAY_TIME
         if get["reason"]:
             await message.reply(
-                "❏ {} <b>Sedang AFK!</b>\n└ <b>Karena:</b> <code>{}</code>".format(
+                "❏ {} <b>to the hell.</b>\n└ <b>Reason:</b> <code>{}</code>".format(
                     client.me.mention, get["reason"]
                 )
             )
         else:
             await message.reply(
-                f"<b>Maaf</b> {client.me.first_name} <b>Sedang AFK!</b>"
+                f"<b>Sory...</b> {client.me.first_name} <b>isn't available right now.</b>"
             )
 
         _, message_type = get_message_type(message)
@@ -111,10 +111,10 @@ async def no_longer_afk(client: Client, message: Message):
     if get and get["afk"]:
         set_afk(False, "")
         try:
-            await client.send_message(BOTLOG_CHATID, "Anda sudah tidak lagi AFK!")
+            await client.send_message(BOTLOG_CHATID, "Welcome back Sir!")
         except BaseException:
             pass
-        text = "<b>Total {} Mention Saat Sedang AFK<b>\n".format(len(MENTIONED))
+        text = "<b>{} Mention<b>\n".format(len(MENTIONED))
         for x in MENTIONED:
             msg_text = x["text"]
             if len(msg_text) >= 11:

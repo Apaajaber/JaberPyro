@@ -21,17 +21,11 @@ from ProjectDark.helpers.tools import get_arg
 
 from .help import add_command_help
 
-DEF_UNAPPROVED_MSG = (
-    "╔════════════════════╗\n"
-    "     ⛑ 𝗔𝗧𝗧𝗘𝗡𝗧𝗜𝗢𝗡 𝗣𝗟𝗘𝗔𝗦𝗘 ⛑\n"
-    "╚════════════════════╝\n"
-    "• Saya belum menyetujui anda untuk PM.\n"
-    "• Tunggu sampai saya menyetujui PM anda.\n"
-    "• Jangan Spam Chat atau anda akan otomatis diblokir.\n"
-    "╔════════════════════╗\n"
-    "    𝗣𝗲𝘀𝗮𝗻 𝗢𝘁𝗼𝗺𝗮𝘁𝗶𝘀 𝗕𝘆 -𝗨𝘀𝗲𝗿𝗕𝗼𝘁\n"
-    "╚════════════════════╝\n"
-)
+DEF_UNAPPROVED_MSG = ("""
+```This message is sent automatically by the session to prevent unknown users from spamming. 
+
+Your message will be replied to immediately if the account owner is online, and as long as it doesn't spam.```
+""")
 
 
 @Client.on_message(
@@ -105,7 +99,7 @@ async def auto_accept(client, message):
             approve(message.chat.id)
             await client.send_message(
                 message.chat.id,
-                f"<b>Menerima Pesan!!!</b>\n{message.from_user.mention} <b>Terdeteksi Developer DarkPyro-Userbot</b>",
+                f"<b>Approved!</b>\n{message.from_user.mention} <b>Terdeteksi Kanger!</b>",
                 parse_mode=enums.ParseMode.HTML,
             )
         except IntegrityError:
@@ -152,7 +146,7 @@ async def approvepm(client: Client, message: Message):
         reply = message.reply_to_message
         replied_user = reply.from_user
         if replied_user.is_self:
-            await message.edit("Anda tidak dapat menyetujui diri sendiri.")
+            await message.edit("Are you stupid?")
             return
         aname = replied_user.id
         name0 = str(replied_user.first_name)
@@ -160,19 +154,17 @@ async def approvepm(client: Client, message: Message):
     else:
         aname = message.chat
         if not aname.type == enums.ChatType.PRIVATE:
-            await message.edit(
-                "Saat ini Anda tidak sedang dalam PM dan Anda belum membalas pesan seseorang."
-            )
+            await message.edit("Are you stupid?")
             return
         name0 = aname.first_name
         uid = aname.id
 
     try:
         approve(uid)
-        await message.edit(f"**Menerima Pesan Dari** [{name0}](tg://user?id={uid})!")
+        await message.edit(f"[{name0}](tg://user?id={uid}) Approved!")
     except IntegrityError:
         await message.edit(
-            f"[{name0}](tg://user?id={uid}) mungkin sudah disetujui untuk PM."
+            f"[{name0}](tg://user?id={uid}) already approved."
         )
         return
 
@@ -191,7 +183,7 @@ async def disapprovepm(client: Client, message: Message):
         reply = message.reply_to_message
         replied_user = reply.from_user
         if replied_user.is_self:
-            await message.edit("Anda tidak bisa menolak dirimu sendiri.")
+            await message.edit("Are you stupid?")
             return
         aname = replied_user.id
         name0 = str(replied_user.first_name)
@@ -199,9 +191,7 @@ async def disapprovepm(client: Client, message: Message):
     else:
         aname = message.chat
         if not aname.type == enums.ChatType.PRIVATE:
-            await message.edit(
-                "Saat ini Anda tidak sedang dalam PM dan Anda belum membalas pesan seseorang."
-            )
+            await message.edit("Are you stupid?")
             return
         name0 = aname.first_name
         uid = aname.id
@@ -209,7 +199,7 @@ async def disapprovepm(client: Client, message: Message):
     dissprove(uid)
 
     await message.edit(
-        f"**Pesan** [{name0}](tg://user?id={uid}) **Telah Ditolak, Mohon Jangan Melakukan Spam Chat!**"
+        f"[{name0}](tg://user?id={uid}) declined! Spam detected."
     )
 
 
