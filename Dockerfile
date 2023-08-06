@@ -1,11 +1,10 @@
-FROM python:3.9-slim-bullseye
+FROM python:3.9-alpine
 
 ENV TZ="Asia/Jakarta"
-
+ENV HOSTNAME DarkPyro
 ENV GIT_PYTHON_REFRESH=quiet
 
-RUN apt -y update; apt -y upgrade; \
-    apt -y install git
+RUN apk add --no-cache git
 
 RUN git clone https://github.com/2R-Dark-Kanger-Pro/DarkPyro-REV \
     /app/darkpyro; chmod 777 /app/darkpyro
