@@ -74,8 +74,9 @@ async def reackon(client: Client, message: Message):
 async def pingme(client: Client, message: Message):
     start = datetime.now()
     end = datetime.now()
+    mmk = await message.reply_text("pinging!!")
     duration = (end - start).microseconds / 1000
-    await message.reply_text(
+    await mmk.edit(_t(
          f"<b>Ping! %sms</b>" % (duration)
     )
 
