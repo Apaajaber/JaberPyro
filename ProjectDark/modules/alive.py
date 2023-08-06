@@ -86,7 +86,7 @@ async def setalivelogo(client: Client, message: Message):
         != 1
         else None
     )
-    if message.reply_to_message.media:
+    if message.reply_to_message and message.reply_to_message.media:
         if message.reply_to_message.sticker:
             m_d = await convert_to_image(message, client)
         else:
@@ -99,6 +99,9 @@ async def setalivelogo(client: Client, message: Message):
             return
         link = f"https://telegra.ph/{media_url[0]}"
         os.remove(m_d)
+    else:
+        await Dark.edit("Anda harus membalas pesan yang berisi media untuk menggunakan perintah ini.")
+
     sql.addgvar("ALIVE_LOGO", link)
     await Dark.edit(
         f"**Berhasil Mengcustom ALIVE LOGO Menjadi {link}**",
